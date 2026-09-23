@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Intermediate HTML, CSS, and JavaScript - Enhance web development skills with form validation, responsive Flexbox and Grid layouts, and dynamic DOM manipulation.">
+  <title>Intermediate HTML, CSS, and JavaScript</title>
+  
+  <!-- Google Fonts: Outfit for display headers, Plus Jakarta Sans for clean body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Decorative Corner & Background Shapes (Teal/Green Theme) -->
+  <div class="bg-shape shape-corner-top-left" aria-hidden="true"></div>
+  <div class="bg-shape shape-corner-top-right" aria-hidden="true"></div>
+  <div class="bg-shape shape-floating-blob-1" aria-hidden="true"></div>
+  <div class="bg-shape shape-floating-blob-2" aria-hidden="true"></div>
+  <div class="bg-shape shape-corner-bottom-right" aria-hidden="true"></div>
+  <div class="bg-grid-overlay" aria-hidden="true"></div>
+
+  <!-- Top Navigation Bar (Flexbox) -->
+  <header class="top-nav-header" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="brand-logo" id="brandLogo">
+        <span class="brand-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+        </span>
+        <span class="brand-name">WebDev<span class="brand-highlight">Intermediate</span></span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#home" class="nav-link active" id="nav-link-home">Home</a></li>
+          <li class="nav-item"><a href="#contact-section" class="nav-link" id="nav-link-contact">Contact Form</a></li>
+          <li class="nav-item"><a href="#validation-section" class="nav-link" id="nav-link-validation">Validation</a></li>
+          <li class="nav-item"><a href="#layout-section" class="nav-link" id="nav-link-layout">Responsive Layout</a></li>
+          <li class="nav-item"><a href="#todo-section" class="nav-link" id="nav-link-todo">To-Do List</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action badge & Mobile Hamburger -->
+      <div class="nav-actions">
+        <span class="task-badge">Task 2</span>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Main Content Wrapper -->
+  <main class="page-wrapper" id="home">
+
+    <!-- Hero / Title Section -->
+    <section class="hero-section">
+      <div class="hero-badge">
+        <span class="pulse-indicator"></span>
+        Apex Web Development &bull; Task 2
+      </div>
+      <h1 class="main-heading">Intermediate HTML, CSS, and JavaScript</h1>
+      <p class="objective-banner">
+        <strong>Objective:</strong> Enhance HTML and CSS skills and learn JavaScript for DOM manipulation.
+      </p>
+
+      <!-- Quick Concept Tech Highlights -->
+      <div class="tech-pills-row">
+        <div class="tech-pill">
+          <svg class="pill-icon html-color" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M3 2l1.8 17.5L12 22l7.2-2.5L21 2H3zm14.8 4.7l-.2 2.3H8.3l.2 2.3h7.6l-.6 6.8-3.5 1-3.5-1-.2-2.8h2.3l.1 1.2 1.3.4 1.3-.4.2-2.3H6.5l-.6-6.8h11.9z"/>
+          </svg>
+          <span>HTML5 Forms & Semantics</span>
+        </div>
+        <div class="tech-pill">
+          <svg class="pill-icon css-color" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M3 2l1.8 17.5L12 22l7.2-2.5L21 2H3zm14.7 4.7H6.5l.2 2.3h10l-.7 7.5-4 1.4-4-1.4-.3-3.2H5.4l.4 5.3 6.2 2.2 6.2-2.2 1-11.5z"/>
+          </svg>
+          <span>Flexbox & CSS Grid</span>
+        </div>
+        <div class="tech-pill">
+          <svg class="pill-icon js-color" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M3 3h18v18H3V3zm13.7 13.9c.7 0 1.2-.2 1.5-.6.3-.4.4-.9.4-1.6V9.8h-2.1v4.8c0 .5-.3.8-.8.8-.4 0-.7-.2-.9-.5l-1.3 1.2c.7.9 1.8 1.4 3.2 1.4zm-6.2-.1c1.3 0 2.2-.6 2.8-1.5l-1.3-1c-.4.5-.8.8-1.4.8-.6 0-1-.3-1-.9 0-.4.2-.7.7-.9l1.6-.6c1.3-.5 1.8-1.3 1.8-2.3 0-1.4-1.1-2.4-2.7-2.4-1.1 0-2 .4-2.6 1.3l1.3 1.1c.3-.5.7-.7 1.2-.7.5 0 .8.3.8.7 0 .4-.3.6-.8.8l-1.5.6c-1.2.5-1.8 1.3-1.8 2.4 0 1.6 1.1 2.7 2.8 2.7z"/>
+          </svg>
+          <span>JavaScript DOM & Events</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: Contact Form using HTML & CSS -->
+    <section class="content-section" id="contact-section">
+      <div class="section-header">
+        <div class="section-number-badge">01</div>
+        <div class="section-title-wrap">
+          <h2 class="section-title">Create a Contact Form Using HTML and CSS</h2>
+          <p class="section-subtitle">Structured semantic markup paired with modern CSS design, floating focus styles, and responsive alignment.</p>
+        </div>
+      </div>
+
+      <div class="cards-grid-split">
+        <!-- Form UI Card -->
+        <article class="modern-card form-card" id="formCard">
+          <div class="card-top-bar">
+            <div class="icon-circle icon-circle-teal">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <div>
+              <h3 class="card-heading">Send Us a Message</h3>
+              <p class="card-caption">Fill out the fields below. Client-side validation protects against empty or malformed input.</p>
+            </div>
+          </div>
+
+          <!-- Contact Form with HTML5 inputs and proper accessibility -->
+          <form id="contactForm" class="contact-form" novalidate>
+            <!-- Full Name Field -->
+            <div class="form-group" id="group-name">
+              <label for="userName" class="form-label">
+                <span>Full Name</span>
+                <span class="required-star" aria-label="Required">*</span>
+              </label>
+              <div class="input-wrapper">
+                <span class="input-icon">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </span>
+                <input 
+                  type="text" 
+                  id="userName" 
+                  name="userName" 
+                  class="form-control" 
+                  placeholder="e.g. Sarah Jenkins"
+                  autocomplete="name"
+                  required
+                >
+                <span class="status-indicator"></span>
+              </div>
+              <div class="error-message" id="userNameError" aria-live="polite"></div>
+            </div>
+
+            <!-- Email Address Field -->
+            <div class="form-group" id="group-email">
+              <label for="userEmail" class="form-label">
+                <span>Email Address</span>
+                <span class="required-star" aria-label="Required">*</span>
+              </label>
+              <div class="input-wrapper">
+                <span class="input-icon">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </span>
+                <input 
+                  type="email" 
+                  id="userEmail" 
+                  name="userEmail" 
+                  class="form-control" 
+                  placeholder="e.g. sarah.jenkins@example.com"
+                  autocomplete="email"
+                  required
+                >
+                <span class="status-indicator"></span>
+              </div>
+              <div class="error-message" id="userEmailError" aria-live="polite"></div>
+            </div>
+
+            <!-- Subject / Inquiry Field -->
+            <div class="form-group" id="group-subject">
+              <label for="userSubject" class="form-label">
+                <span>Inquiry Subject</span>
+              </label>
+              <div class="input-wrapper">
+                <span class="input-icon">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="4" y1="9" x2="20" y2="9"></line>
+                    <line x1="4" y1="15" x2="20" y2="15"></line>
+                    <line x1="10" y1="3" x2="8" y2="21"></line>
+                    <line x1="16" y1="3" x2="14" y2="21"></line>
+                  </svg>
+                </span>
+                <select id="userSubject" name="userSubject" class="form-control form-select">
+                  <option value="General Inquiry">General Web Dev Inquiry</option>
+                  <option value="Task 2 Feedback">Task 2 Project Feedback</option>
+                  <option value="DOM Manipulation">JavaScript DOM Question</option>
+                  <option value="Collaboration">Collaboration / Study Group</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Message Textarea Field -->
+            <div class="form-group" id="group-message">
+              <label for="userMessage" class="form-label">
+                <span>Your Message</span>
+                <span class="required-star" aria-label="Required">*</span>
+              </label>
+              <div class="input-wrapper textarea-wrapper">
+                <span class="input-icon textarea-icon">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                </span>
+                <textarea 
+                  id="userMessage" 
+                  name="userMessage" 
+                  class="form-control form-textarea" 
+                  rows="4" 
+                  placeholder="Type your message here (minimum 10 characters)..."
+                  required
+                ></textarea>
+              </div>
+              <div class="error-message" id="userMessageError" aria-live="polite"></div>
+            </div>
+
+            <!-- Submit Button & Reset Button -->
+            <div class="form-actions-row">
+              <button type="submit" id="submitBtn" class="btn btn-primary" aria-label="Submit Contact Form">
+                <span class="btn-text">Submit Message</span>
+                <span class="btn-icon">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                </span>
+              </button>
+              <button type="button" id="resetFormBtn" class="btn btn-secondary" aria-label="Reset Form">
+                Clear
+              </button>
+            </div>
+
+            <!-- Success Alert Banner (Initially hidden) -->
+            <div id="formSuccessAlert" class="alert-box alert-success hidden" role="alert" aria-live="assertive">
+              <div class="alert-icon-wrap">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <div class="alert-content">
+                <h4 class="alert-title">Message Sent Successfully!</h4>
+                <p id="formSuccessDetails">Thank you! Your form inputs were validated and processed using JavaScript.</p>
+              </div>
+              <button type="button" class="alert-close-btn" id="closeAlertBtn" aria-label="Close message">&times;</button>
+            </div>
+          </form>
+        </article>
+
+        <!-- Educational Explanation Card: HTML & CSS Form Best Practices -->
+        <article class="modern-card info-card">
+          <div class="card-top-bar">
+            <div class="icon-circle icon-circle-mint">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+            </div>
+            <div>
+              <h3 class="card-heading">Form Architecture Breakdown</h3>
+              <p class="card-caption">Core techniques used to style and structure this form.</p>
+            </div>
+          </div>
+
+          <ul class="concept-breakdown-list">
+            <li class="concept-card-item">
+              <div class="concept-tag-icon">HTML</div>
+              <div class="concept-content">
+                <strong>Semantic Tags & Accessibility:</strong>
+                <p>Using <code>&lt;form&gt;</code>, <code>&lt;label for="..."&gt;</code>, and <code>&lt;input id="..."&gt;</code> ensures assistive technologies and screen readers accurately connect labels to input controls.</p>
+              </div>
+            </li>
+            <li class="concept-card-item">
+              <div class="concept-tag-icon">CSS</div>
+              <div class="concept-content">
+                <strong>Floating Focus Rings & Hover Effects:</strong>
+                <p>CSS pseudo-classes like <code>:focus-visible</code> and <code>:hover</code> provide instant visual feedback with smooth teal accent shadows.</p>
+              </div>
+            </li>
+            <li class="concept-card-item">
+              <div class="concept-tag-icon">FLEX</div>
+              <div class="concept-content">
+                <strong>Input Icon Alignment:</strong>
+                <p>Flexbox positions the left SVG icons cleanly alongside the text inputs without overlapping placeholder text.</p>
+              </div>
+            </li>
+            <li class="concept-card-item">
+              <div class="concept-tag-icon">GRID</div>
+              <div class="concept-content">
+                <strong>Adaptive Two-Column Layout:</strong>
+                <p>CSS Grid automatically splits the form and explanation card on desktop screens and stacks gracefully on mobile screens.</p>
+              </div>
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Add JavaScript Form Validation -->
+    <section class="content-section" id="validation-section">
+      <div class="section-header">
+        <div class="section-number-badge">02</div>
+        <div class="section-title-wrap">
+          <h2 class="section-title">Add JavaScript Form Validation</h2>
+          <p class="section-subtitle">Real-time and submit-time client-side verification ensuring data cleanliness before submission.</p>
+        </div>
+      </div>
+
+      <!-- 3 Validation Rules Cards (CSS Grid) -->
+      <div class="validation-features-grid">
+        <!-- Rule 1: Required Fields -->
+        <article class="modern-card val-rule-card">
+          <div class="val-rule-header">
+            <div class="rule-icon-box">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 11l3 3L22 4"></path>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+              </svg>
+            </div>
+            <span class="rule-badge">Rule 1</span>
+          </div>
+          <h3 class="val-title">Required Field Validation</h3>
+          <p class="val-desc">Inspects input elements for empty or whitespace-only values using <code>.trim() === ''</code>. Instantly adds <code>.is-invalid</code> class to highlight missing fields.</p>
+          <div class="code-snippet-box">
+            <code>if (nameInput.value.trim() === '') { showError('Name is required'); }</code>
+          </div>
+        </article>
+
+        <!-- Rule 2: Email Regex Format -->
+        <article class="modern-card val-rule-card">
+          <div class="val-rule-header">
+            <div class="rule-icon-box">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path>
+              </svg>
+            </div>
+            <span class="rule-badge">Rule 2</span>
+          </div>
+          <h3 class="val-title">Email Format Verification</h3>
+          <p class="val-desc">Tests the email string against a regular expression pattern to guarantee user input includes username, domain, and top-level extension (e.g. <code>user@example.com</code>).</p>
+          <div class="code-snippet-box">
+            <code>const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;</code>
+          </div>
+        </article>
+
+        <!-- Rule 3: Dynamic Feedback & DOM Updates -->
+        <article class="modern-card val-rule-card">
+          <div class="val-rule-header">
+            <div class="rule-icon-box">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <span class="rule-badge">Rule 3</span>
+          </div>
+          <h3 class="val-title">Dynamic Error & Success UI</h3>
+          <p class="val-desc">Clears error messages automatically when the user starts typing (via <code>input</code> listeners) and surfaces a high-contrast success banner on successful validation.</p>
+          <div class="code-snippet-box">
+            <code>input.addEventListener('input', () => clearError(input));</code>
+          </div>
+        </article>
+      </div>
+
+      <!-- Live Interactive Validation Console Card -->
+      <article class="modern-card val-inspector-card">
+        <div class="inspector-header">
+          <div class="terminal-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <span class="inspector-title">JavaScript Validation Live Status Monitor</span>
+          <span class="inspector-live-tag">LIVE DOM STATE</span>
+        </div>
+        <div class="inspector-body">
+          <div class="inspector-grid">
+            <div class="status-metric">
+              <span class="metric-label">Name Status</span>
+              <span class="metric-value" id="valStatusName">Awaiting Input</span>
+            </div>
+            <div class="status-metric">
+              <span class="metric-label">Email Status</span>
+              <span class="metric-value" id="valStatusEmail">Awaiting Input</span>
+            </div>
+            <div class="status-metric">
+              <span class="metric-label">Message Length</span>
+              <span class="metric-value" id="valStatusMsg">0 chars</span>
+            </div>
+            <div class="status-metric">
+              <span class="metric-label">Form State</span>
+              <span class="metric-value status-ready" id="valStatusOverall">Ready for Validation</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- SECTION 3: Responsive Layout Using Flexbox and CSS Grid -->
+    <section class="content-section" id="layout-section">
+      <div class="section-header">
+        <div class="section-number-badge">03</div>
+        <div class="section-title-wrap">
+          <h2 class="section-title">Create a Responsive Layout Using Flexbox and CSS Grid</h2>
+          <p class="section-subtitle">Harnessing Flexbox for linear alignment and CSS Grid for two-dimensional content architecture across any screen size.</p>
+        </div>
+      </div>
+
+      <div class="layout-comparison-grid">
+        <!-- Flexbox Explanation & Interactive Demo -->
+        <article class="modern-card layout-card">
+          <div class="card-top-bar">
+            <div class="icon-circle icon-circle-teal">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="9" y1="3" x2="9" y2="21"></line>
+              </svg>
+            </div>
+            <div>
+              <h3 class="card-heading">Flexbox: 1-Dimensional Alignment</h3>
+              <p class="card-caption">Ideal for navigation bars, button rows, and horizontal/vertical centering.</p>
+            </div>
+          </div>
+
+          <div class="layout-visual-wrapper">
+            <div class="interactive-controls-row">
+              <span class="controls-label">Justify Content:</span>
+              <div class="btn-group" id="flexJustifyControls">
+                <button type="button" class="btn-chip active" data-justify="space-between">space-between</button>
+                <button type="button" class="btn-chip" data-justify="center">center</button>
+                <button type="button" class="btn-chip" data-justify="space-around">space-around</button>
+              </div>
+            </div>
+
+            <!-- Live Flexbox Sandbox Container -->
+            <div class="demo-flex-box" id="demoFlexBox">
+              <div class="flex-item-demo"><span>Nav Link 1</span></div>
+              <div class="flex-item-demo"><span>Nav Link 2</span></div>
+              <div class="flex-item-demo"><span>Nav Link 3</span></div>
+              <div class="flex-item-demo brand-item"><span>Brand CTA</span></div>
+            </div>
+            
+            <p class="demo-explanation-caption">
+              ⚡ <strong>How it works:</strong> Click the chips above to watch JavaScript change <code>justify-content</code> dynamically in real time!
+            </p>
+          </div>
+        </article>
+
+        <!-- CSS Grid Explanation & Interactive Demo -->
+        <article class="modern-card layout-card">
+          <div class="card-top-bar">
+            <div class="icon-circle icon-circle-mint">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+            </div>
+            <div>
+              <h3 class="card-heading">CSS Grid: 2-Dimensional Structure</h3>
+              <p class="card-caption">Ideal for complex card grids, responsive dashboard panels, and multi-column magazine layouts.</p>
+            </div>
+          </div>
+
+          <div class="layout-visual-wrapper">
+            <div class="interactive-controls-row">
+              <span class="controls-label">Columns Template:</span>
+              <div class="btn-group" id="gridColumnsControls">
+                <button type="button" class="btn-chip active" data-columns="repeat(3, 1fr)">3 Columns</button>
+                <button type="button" class="btn-chip" data-columns="repeat(2, 1fr)">2 Columns</button>
+                <button type="button" class="btn-chip" data-columns="1fr">1 Column (Mobile)</button>
+              </div>
+            </div>
+
+            <!-- Live CSS Grid Sandbox Container -->
+            <div class="demo-grid-box" id="demoGridBox">
+              <div class="grid-item-demo"><span>Card A</span></div>
+              <div class="grid-item-demo"><span>Card B</span></div>
+              <div class="grid-item-demo"><span>Card C</span></div>
+              <div class="grid-item-demo"><span>Card D</span></div>
+              <div class="grid-item-demo"><span>Card E</span></div>
+              <div class="grid-item-demo"><span>Card F</span></div>
+            </div>
+
+            <p class="demo-explanation-caption">
+              ⚡ <strong>How it works:</strong> Click any button above to dynamically alter the <code>grid-template-columns</code> layout.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Responsive Media Queries Explanatory Card -->
+      <article class="modern-card media-queries-card">
+        <div class="card-top-bar">
+          <div class="icon-circle icon-circle-teal">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <div>
+            <h3 class="card-heading">Responsive Breakpoint Strategy</h3>
+            <p class="card-caption">Media queries guarantee fluidity across Mobile (&lt;640px), Tablet (640px&ndash;1024px), and Desktop (&gt;1024px).</p>
+          </div>
+        </div>
+
+        <div class="breakpoints-table-wrapper">
+          <table class="breakpoints-table">
+            <thead>
+              <tr>
+                <th>Device Target</th>
+                <th>Breakpoint Rule</th>
+                <th>Layout Adaptation</th>
+                <th>Flex / Grid Application</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="device-pill mobile-badge">Mobile</span></td>
+                <td><code>@media (max-width: 640px)</code></td>
+                <td>Single column stack, full-width inputs, collapsed hamburger navigation</td>
+                <td><code>flex-direction: column</code> / <code>grid-template-columns: 1fr</code></td>
+              </tr>
+              <tr>
+                <td><span class="device-pill tablet-badge">Tablet</span></td>
+                <td><code>@media (max-width: 1024px)</code></td>
+                <td>2-column grid cards, condensed spacing, touch-friendly tap targets</td>
+                <td><code>grid-template-columns: repeat(2, 1fr)</code></td>
+              </tr>
+              <tr>
+                <td><span class="device-pill desktop-badge">Desktop</span></td>
+                <td><code>@media (min-width: 1025px)</code></td>
+                <td>Full multi-column layout, sticky navigation bar, generous padding</td>
+                <td><code>grid-template-columns: repeat(3, 1fr)</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <!-- SECTION 4: Develop a Dynamic To-Do List Using JavaScript -->
+    <section class="content-section" id="todo-section">
+      <div class="section-header">
+        <div class="section-number-badge">04</div>
+        <div class="section-title-wrap">
+          <h2 class="section-title">Develop a Dynamic To-Do List Using JavaScript</h2>
+          <p class="section-subtitle">Real-world JavaScript DOM manipulation: adding tasks, toggling completion, deleting nodes, and live stats calculation.</p>
+        </div>
+      </div>
+
+      <div class="cards-grid-split">
+        <!-- Interactive To-Do List Application Card -->
+        <article class="modern-card todo-card" id="todoCard">
+          <div class="card-top-bar">
+            <div class="icon-circle icon-circle-teal">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 20h9"></path>
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="card-heading">Interactive Task Manager</h3>
+              <p class="card-caption">Add tasks, mark them complete, filter views, or delete items instantly.</p>
+            </div>
+          </div>
+
+          <!-- To-Do Input Row -->
+          <div class="todo-input-group">
+            <input 
+              type="text" 
+              id="todoInput" 
+              class="form-control todo-input" 
+              placeholder="What needs to be done? (e.g. Master Flexbox align-items)" 
+              aria-label="New task input"
+            >
+            <button type="button" id="addTodoBtn" class="btn btn-primary btn-add-todo" aria-label="Add task to list">
+              <span class="btn-icon">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </span>
+              <span class="btn-text">Add Task</span>
+            </button>
+          </div>
+          <div class="error-message" id="todoInputError" aria-live="polite"></div>
+
+          <!-- Filter & Statistics Bar -->
+          <div class="todo-toolbar">
+            <!-- Filter Tabs -->
+            <div class="todo-filters" role="tablist" aria-label="Task Filters">
+              <button type="button" class="filter-tab active" data-filter="all" id="filterAll">All</button>
+              <button type="button" class="filter-tab" data-filter="active" id="filterActive">Active</button>
+              <button type="button" class="filter-tab" data-filter="completed" id="filterCompleted">Completed</button>
+            </div>
+
+            <!-- Stats Badge -->
+            <div class="todo-stats">
+              <span id="pendingCount">0</span> items left
+            </div>
+          </div>
+
+          <!-- Dynamic Tasks List (DOM Managed) -->
+          <ul class="todo-list" id="todoList" aria-label="Tasks list">
+            <!-- Populated dynamically by script.js -->
+          </ul>
+
+          <!-- Empty State Message -->
+          <div id="todoEmptyState" class="todo-empty-state hidden">
+            <div class="empty-icon">🎉</div>
+            <p class="empty-text">No tasks here! Add a task above to get started.</p>
+          </div>
+
+          <!-- Bottom Summary Actions -->
+          <div class="todo-footer-row">
+            <div class="todo-counter-summary">
+              <span>Total: <strong id="totalCount">0</strong></span>
+              <span>&bull;</span>
+              <span>Done: <strong id="completedCount">0</strong></span>
+            </div>
+            <button type="button" id="clearCompletedBtn" class="btn-text-action" aria-label="Clear all completed tasks">
+              Clear Completed
+            </button>
+          </div>
+        </article>
+
+        <!-- DOM Manipulation Explained Card -->
+        <article class="modern-card info-card">
+          <div class="card-top-bar">
+            <div class="icon-circle icon-circle-mint">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="4 17 10 11 4 5"></polyline>
+                <line x1="12" y1="19" x2="20" y2="19"></line>
+              </svg>
+            </div>
+            <div>
+              <h3 class="card-heading">DOM Manipulation Under the Hood</h3>
+              <p class="card-caption">How JavaScript handles dynamic document modifications in memory.</p>
+            </div>
+          </div>
+
+          <ul class="concept-breakdown-list">
+            <li class="concept-card-item">
+              <div class="concept-tag-icon">DOM</div>
+              <div class="concept-content">
+                <strong>Creating Dynamic Nodes:</strong>
+                <p><code>document.createElement('li')</code> generates fresh HTML elements in browser memory before mounting them into the document tree.</p>
+              </div>
+            </li>
+            <li class="concept-card-item">
+              <div class="concept-tag-icon">EVENT</div>
+              <div class="concept-content">
+                <strong>Event Listeners & Delegation:</strong>
+                <p>Listening for <code>click</code>, <code>change</code>, and <code>keydown</code> allows users to trigger tasks seamlessly by hitting Enter or clicking buttons.</p>
+              </div>
+            </li>
+            <li class="concept-card-item">
+              <div class="concept-tag-icon">TREE</div>
+              <div class="concept-content">
+                <strong>Appending & Removing Elements:</strong>
+                <p><code>parentElement.appendChild(newElement)</code> attaches items to the list, while <code>element.remove()</code> completely detaches them from the DOM.</p>
+              </div>
+            </li>
+            <li class="concept-card-item">
+              <div class="concept-tag-icon">CLASS</div>
+              <div class="concept-content">
+                <strong>Toggling CSS State Classes:</strong>
+                <p><code>classList.toggle('completed')</code> applies strikethrough styling and updates accessibility attributes dynamically.</p>
+              </div>
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Page Footer -->
+  <footer class="page-footer">
+    <div class="footer-container">
+      <div class="footer-top-row">
+        <div class="footer-brand">
+          <div class="brand-logo footer-logo">
+            <span class="brand-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </span>
+            <span class="brand-name">WebDev<span class="brand-highlight">Intermediate</span></span>
+          </div>
+          <p class="footer-tagline">
+            Apex Web Development &bull; Hands-on showcase of intermediate HTML forms, CSS responsive layouts, and JavaScript DOM manipulation.
+          </p>
+        </div>
+
+        <div class="footer-nav-col">
+          <h4 class="footer-heading">Quick Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#contact-section">Contact Form</a></li>
+            <li><a href="#validation-section">Form Validation</a></li>
+            <li><a href="#layout-section">Responsive Layout</a></li>
+            <li><a href="#todo-section">Dynamic To-Do List</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-info-col">
+          <h4 class="footer-heading">Key Competencies</h4>
+          <div class="footer-pills">
+            <span class="f-pill">HTML5 Form Controls</span>
+            <span class="f-pill">Flexbox Navigation</span>
+            <span class="f-pill">CSS Grid Architecture</span>
+            <span class="f-pill">JavaScript Regex</span>
+            <span class="f-pill">DOM Event Handling</span>
+            <span class="f-pill">Zero Backend Needed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <!-- EXACT REQUIRED FOOTER TEXT -->
+        <p class="footer-credit">Task 2 – Intermediate Web Development</p>
+        <p class="footer-meta">Created for apex web development intermediate track &bull; Pure HTML5, CSS3 &amp; ES6 JavaScript</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript Application Script -->
+  <script src="script.js"></script>
+</body>
+</html>
